@@ -1,1 +1,1 @@
-# pop
+# principles of operation
