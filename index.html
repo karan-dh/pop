@@ -1,1 +1,32 @@
-hello world!
+<html>
+   <head>
+      <title>Principles of Operation</title>
+      <script type="text/javascript" src="scripts/jquery-2.1.4.js"></script>
+      <script type="text/javascript" src="scripts/instructions.js"></script>
+      <script type="text/javascript" src="scripts/functions.js"></script>
+
+      <script type="text/javascript">
+         pop.buildIndex(pop.InstructionFieldEnum.MNEMONIC);
+      </script>
+
+   </head>
+   <body>
+      <h1>Principles of Operation</h1>
+      <div>
+         Opcode Mnemonic: <input type="textbox" id="search-term"></input> <button id="search">search</button>
+      </div>
+      <br />
+      <div id="results">
+      </div>
+   </body>
+
+   <script type="text/javascript">
+      $("#search").click(function() {
+
+         query = $("#search-term").val();
+         inst  = pop.findInstruction(pop.InstructionFieldEnum.MNEMONIC, query);
+         
+         $("#results").html(inst);
+      });
+   </script>
+</html>
