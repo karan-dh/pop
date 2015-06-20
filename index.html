@@ -21,6 +21,12 @@
    </body>
 
    <script type="text/javascript">
+      $("#search-term").keypress(function(e) {
+          if(e.which == 13) {
+            $("#search").click();
+          }
+      });
+
       $("#search").click(function() {
 
          query = $("#search-term").val();

@@ -36,7 +36,7 @@ pop.buildIndex = function(key) {
 pop.findInstruction = function(key, query) {
 	instIndex = pop.index[key][query]
 	if (instIndex == undefined) 
-		return ""
+		return "not found"
 
 	return JSON.stringify(instructions[instIndex])
 }
