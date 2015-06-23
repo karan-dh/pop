@@ -9,6 +9,11 @@
          pop.buildIndex(pop.InstructionFieldEnum.MNEMONIC);
       </script>
 
+      <style>
+      table { font-family: Verdana; font-size: 10px;}
+      .label { color: white; background-color: black; font-weight: bold; }
+      </style>
+
    </head>
    <body>
       <h1>Principles of Operation</h1>
@@ -16,11 +21,40 @@
          Opcode Mnemonic: <input type="textbox" id="search-term"></input> <button id="search">search</button>
       </div>
       <br />
+      <div id="debug">
+      </div>
+      <br />
       <div id="results">
       </div>
+      <iframe src="structured-data/Z-architecture.pdf" style="width:718px; height:700px;" frameborder="0"></iframe>
    </body>
 
    <script type="text/javascript">
+
+      // adds the instruction to the results section.
+      function prettyPrint(inst) {
+         inst = JSON.parse(inst);
+         html = "";
+         html += "<table style='border:0px         '>";
+         html += "<tr>"
+         html += "<td class='label'>mnemonic</td>" + "<td>" + inst["mnemonic"] + "</td>";
+         html += "</tr>"
+         html += "<tr>"
+         html += "<td class='label'>format</td>" + "<td>" + inst["inst-format"] + "</td>";
+         html += "</tr>"
+         html += "<tr>"
+         html += "<td class='label'>opcode</td>" + "<td>" + inst["opcode"] + "</td>";
+         html += "</tr>"
+         html += "<tr>"
+         html += "<td class='label'>name</td>" + "<td>" + inst["name"] + "</td>";
+         html += "</tr>"
+         html += "<tr>"
+         html += "<td class='label'>pop index</td>" + "<td>" + inst["pop-index"] + "</td>";
+         html += "</tr>"
+         html += "</table>";
+         $("#results").html(html);
+      }
+
       $("#search-term").keypress(function(e) {
           if(e.which == 13) {
             $("#search").click();
@@ -32,7 +66,7 @@
          query = $("#search-term").val();
          inst  = pop.findInstruction(pop.InstructionFieldEnum.MNEMONIC, query);
          
-         $("#results").html(inst);
+         prettyPrint(inst);
       });
    </script>
 </html>

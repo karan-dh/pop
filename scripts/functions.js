@@ -8,14 +8,16 @@ pop.InstructionFieldEnum = {
 	"MNEMONIC" 	: 1,
 	"NAME"		: 2,
 	"OPCODE" 	: 3,
-	"POP-INDEX" : 4
+	"POP-INDEX" : 4,
+	"INST-FORMAT" : 5
 }
 
 pop.InstructionKeys = {
 	1 : "mnemonic",
 	2 : "name",
 	3 : "opcode",
-	4 : "pop-index"
+	4 : "pop-index",
+	5 : "inst-format"
 }
 
 // build an index based on the key (pop.InstructionFieldEnum)
